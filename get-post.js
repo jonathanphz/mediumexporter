@@ -7,11 +7,14 @@ module.exports = function(mediumURL, program, callback) {
   utils.loadMediumPost(mediumURL, function(err, json) {
 
     var s = json.payload.value;
+    var authorID = s.creatorId;
+    var author = json.payload.references.User[authorID].name;
     var story = {};
 
     story.title = s.title;
     story.date = new Date(s.createdAt);
     story.url = s.canonicalUrl;
+    story.author = author;
     story.language = s.detectedLanguage;
     story.license = s.license;
 
@@ -23,9 +26,11 @@ module.exports = function(mediumURL, program, callback) {
     var outputText = '';
 
     if(program.headers) {
-      outputText += 'url:' + story.url + '\n';
-      outputText += 'date:' + story.date + '\n';
+      outputText += program.separator + '\n';
       outputText += 'title:' + story.title + '\n';
+      outputText += 'author:' + story.author + '\n';
+      outputText += 'date:' + story.date + '\n';
+      outputText += 'url:' + story.url + '\n';
       outputText += program.separator + '\n';
     }
 
