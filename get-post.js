@@ -27,10 +27,10 @@ module.exports = function(mediumURL, program, callback) {
 
     if(program.headers) {
       outputText += program.separator + '\n';
-      outputText += 'title:' + story.title + '\n';
-      outputText += 'author:' + story.author + '\n';
-      outputText += 'date:' + story.date + '\n';
-      outputText += 'url:' + story.url + '\n';
+      outputText += 'title: ' + story.title + '\n';
+      outputText += 'author: ' + story.author + '\n';
+      outputText += 'date: ' + story.date + '\n';
+      outputText += 'url: ' + story.url + '\n';
       outputText += program.separator + '\n';
     }
 
