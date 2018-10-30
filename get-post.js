@@ -1,6 +1,7 @@
 var utils = require('./utils')
   , fs = require('fs')
   , Promise = require('bluebird')
+  , moment = require('moment')
   ;
 
 module.exports = function(mediumURL, program, callback) {
@@ -12,7 +13,7 @@ module.exports = function(mediumURL, program, callback) {
     var story = {};
 
     story.title = s.title;
-    story.date = new Date(s.createdAt);
+    story.date = moment(s.createdAt).format('LL');
     story.url = s.canonicalUrl;
     story.author = author;
     story.language = s.detectedLanguage;
